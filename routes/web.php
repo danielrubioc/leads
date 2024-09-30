@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\v1\LeadController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -23,5 +23,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+
+Route::prefix('v1')->group(function () {
+    Route::post('/leads', [LeadController::class, 'store']); // Ruta para crear un nuevo lead (v1)
+    Route::get('/leads/{rut}', [LeadController::class, 'showLeadsByRut']); // Ruta para ver leads de un perfil por RUT (v1)
+});
+
 
 require __DIR__.'/auth.php';
