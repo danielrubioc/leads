@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('leads', function (Blueprint $table) {
+        Schema::create('form_submissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profile_id')->nullable()->constrained()->onDelete('set null');  // Relación con profile
-            $table->string('source')->nullable();  // Origen del formulario
-            $table->timestamps();  // Timestamps para created_at y updated_at
+            $table->foreignId('form_id')->constrained()->onDelete('cascade'); // Relación con forms
+            $table->json('data'); // Datos enviados como JSON
+            $table->timestamps();
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leads');
+        Schema::dropIfExists('form_submissions');
     }
 };

@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lead_attributes', function (Blueprint $table) {
+        Schema::create('forms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lead_id')->constrained()->onDelete('cascade');  // Relación con lead
-            $table->string('key');  // Nombre del campo
-            $table->text('value');  // Valor del campo
-            $table->timestamps();  // Timestamps
+            $table->string('name'); // Nombre del formulario
+            $table->timestamps();
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lead_attributes');
+        Schema::dropIfExists('forms');
     }
 };

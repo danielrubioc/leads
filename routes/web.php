@@ -1,6 +1,6 @@
 <?php
-use App\Http\Controllers\v1\LeadController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\v1\FormController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,8 +28,8 @@ Route::middleware('auth')->group(function () {
 
 
 Route::prefix('v1')->group(function () {
-    Route::post('/leads', [LeadController::class, 'store']); // Ruta para crear un nuevo lead (v1)
-    Route::get('/leads/{rut}', [LeadController::class, 'showLeadsByRut']); // Ruta para ver leads de un perfil por RUT (v1)
+    Route::apiResource('forms', FormController::class);
+    Route::post('forms/{id}/submit', [FormController::class, 'submit']);
 });
 
 

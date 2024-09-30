@@ -22,9 +22,8 @@ class DatabaseSeeder extends Seeder
 
         // Llamar a los seeders
         $this->call([
-            ProfileSeeder::class,
-            LeadSeeder::class,
-            LeadAttributeSeeder::class,
+            FormSeeder::class,
+            FormSubmissionSeeder::class,
         ]);
     }
 }
