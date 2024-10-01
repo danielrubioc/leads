@@ -11,6 +11,12 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
+    const STATUS_ACTIVE = 'activo';
+    const STATUS_INACTIVE = 'inactivo';
+    const STATUS_SUSPENDED = 'suspendido';
+    const STATUS_VERIFIED = 'verificado';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
     ];
 
     /**

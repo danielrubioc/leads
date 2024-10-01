@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\v1\FormController;
+use App\Http\Controllers\v1\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('forms', FormController::class);
+    Route::apiResource('users', UserController::class);
     Route::post('forms/{id}/submit', [FormController::class, 'submit']);
 });
 
